@@ -14,7 +14,9 @@ class FileHelpers {
         File f = start.toFile();
         List<File> result = new ArrayList<>();
         if(f.isDirectory()) {
-            File[] paths = f.listFiles();
+            System.out.println(f.toString());
+            System.out.println("This is a directory!");
+                File[] paths = f.listFiles();
             for(File subFile: paths) {
                 result.addAll(getFiles(subFile.toPath()));
             }
@@ -25,7 +27,7 @@ class FileHelpers {
         return result;
     }
     static String readFile(File f) throws IOException {
-        return new String(Files.readAllBytes(f.toPath()));
+        return f.getName();
     }
 }
 
@@ -74,4 +76,3 @@ class DocSearchServer {
         Server.start(port, new Handler("./technical/"));
     }
 }
-
